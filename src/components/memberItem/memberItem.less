@@ -1,7 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
-
-const StyledWrapper = styled.div`
+.memberItem {
     background-color: rgba(255, 255, 255, 0.7);
     width: 220px;
     height: 180px;
@@ -19,19 +16,8 @@ const StyledWrapper = styled.div`
         background-color: rgba(255, 255, 255, 0.85);
         box-shadow: 0 2px 3px 5px rgba(0, 0, 0, 0.2);
     }
-`;
 
-const StyledName = styled.h2`
-    text-align: center;
-`
-
-const MemberItem = ({ member }) => (
-    <StyledWrapper>
-        <StyledName>
-            {member.first_name}&nbsp;{member.last_name}
-        </StyledName>
-    </StyledWrapper>
-);
-
-
-export default MemberItem;
+    .memberName {
+        text-align: center;
+    }
+}

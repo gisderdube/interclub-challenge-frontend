@@ -1,35 +1,43 @@
 import React, {Component} from 'react';
-import styled from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 
-import MemberList from './MemberList';
+import Root from './Root';
+import MemberList from './containers/MemberList';
+import Member from './containers/Member';
 
-const StyledWrapper = styled.div`
-    width: 100vw;
-    min-height: 100vh;
-    padding-top: 100px;
-    position: relative;
-    z-index: 1;
-    background: linear-gradient(135deg, #c917a0 0%,#7e57c2 100%);
-`;
+import './styles/main.less';
 
-const StyledLogoLink = styled.a`
-    position: absolute;
-    z-index: 2;
-    top: 50px;
-    left: 50px;
-    width: 48px;
-    height: 48px;
-`;
+const routes = [
+    {
+        component: Root,
+        routes: [
+            {
+                path: '/',
+                exact: true,
+                component: MemberList
+            },
+            {
+                path: '/:id',
+                component: Member
+            }
+        ]
+    }
+];
 
-export default class App extends Component {
+class App extends Component {
     render() {
         return (
-            <StyledWrapper>
-                <StyledLogoLink href='https://interclub.io' target='_blank'>
-                    <img src='/assets/inv_logo_48x48.png' />
-                </StyledLogoLink>
-                <MemberList />
-            </StyledWrapper>
+            <BrowserRouter>
+                <div className='appWrapper'>
+                    <a className='logo' href='https://interclub.io' rel="noopener noreferrer" target='_blank'>
+                        <img src='/assets/inv_logo_48x48.png' />
+                    </a>
+                    {renderRoutes(routes)}
+                </div>
+            </BrowserRouter>
         );
     }
 }
+
+export default App;

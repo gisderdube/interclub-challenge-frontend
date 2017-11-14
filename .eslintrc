@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+  ],
+  "rules": {
+    "no-console":0,
+    "no-undef": 0,
+    "no-debugger": 0,
+    "no-unused-vars": 1,
+    "react/prop-types": [2, { "ignore": ["history"]}]
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}

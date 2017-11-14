@@ -1,23 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { injectGlobal } from 'styled-components'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunkMiddleware from 'redux-thunk';
+import reducer from './reducers';
 
 import App from './App';
 
-injectGlobal`
-    * {
-        box-sizing: border-box;
-    }
+const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
-    body,
-    html {
-        margin: 0;
-        padding: 0;
-        width: 100vw;
-        font-family: 'Roboto', sans-serif;
-        overflow-x: hidden;
-        font-size: 14px;
-    }
-`
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+);
+module.hot.accept();
