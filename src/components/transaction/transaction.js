@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import styles from './transaction.less';
 
@@ -24,7 +25,7 @@ export default class Transaction extends React.PureComponent {
         const { amount, type, date } = this.props;
 
         return (<div className={styles.transaction}>
-            <div className={styles.date}>{new Date(date).toLocaleString()}</div>
+            <div className={styles.date}>{moment(date).calendar()}</div>
             <div className={styles.type}>{type}</div>
             <div className={styles.amount}>{amount}</div>
         </div>)
