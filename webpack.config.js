@@ -71,7 +71,6 @@ if (process.env.NODE_ENV === 'production') {
         new webpack.optimize.AggressiveMergingPlugin({
             minSizeReduce: 1,
             moveToParents: true
-
         })
     )
 
