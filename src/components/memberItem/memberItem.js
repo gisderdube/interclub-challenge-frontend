@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Card, CardActions, CardHeader} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import Avatar from 'material-ui/Avatar';
+import UserAvatar from 'material-ui/svg-icons/social/person';
 
 import styles from './memberItem.less';
 
 const MemberItem = ({ member, selectCallback }) => (
-    <div className={styles.memberItem} onClick={() => selectCallback(member.id)}>
-        <h2 className={styles.memberName}>
-            {member.first_name}&nbsp;{member.last_name}
-        </h2>
-    </div>
+    <Card className={styles.memberItem}>
+        <CardHeader
+            title={`${member.first_name} ${member.last_name}`}
+            subtitle={`${member.email || '******************'}`}
+            avatar={<Avatar icon={<UserAvatar/>}/>}
+        />
+        <CardActions>
+            <FlatButton label="See transactions" onTouchTap={() => selectCallback(member.id)}/>
+        </CardActions>
+    </Card>
 );
 
 MemberItem.propTypes = {

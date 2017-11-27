@@ -30,9 +30,6 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className='appWrapper'>
-                    <a className='logo' href='https://interclub.io' rel="noopener noreferrer" target='_blank'>
-                        <img src='/assets/inv_logo_48x48.png' />
-                    </a>
                     {renderRoutes(routes)}
                 </div>
             </BrowserRouter>
